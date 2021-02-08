@@ -41,6 +41,7 @@ public class App
 
         System.out.println("BFS");
         Stack<Node<Integer>> route = BFS.search(16, zona21);
+        System.out.println("The route is: ");
         System.out.print(route.pop().getValue());
 
         while(!route.isEmpty()){
@@ -48,8 +49,19 @@ public class App
             System.out.print(route.pop().getValue());
         }
 
-        // System.out.println("BFSVersion2");
-        // route = BFSVersion2.search(16, zona21);
+        System.out.println("");
+
+        System.out.println("BFSVersion2");
+        route = BFSVersion2.search(16, zona21);
+        System.out.println("The route is: ");
+        System.out.print(route.pop().getValue());
+
+        while(!route.isEmpty()){
+            System.out.print("->");
+            System.out.print(route.pop().getValue());
+        }
+
+        System.out.println("");
 
     }
 

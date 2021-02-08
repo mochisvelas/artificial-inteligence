@@ -17,7 +17,7 @@ public class BFS {
             System.out.println("Current node is "+ currentNode.getValue());
             visitedNodes.add(currentNode);
 
-            if(currentNode.getValue().equals(value)){ // if current node is goal break while
+            if(currentNode.getValue().equals(value)){ // if current node is goal, break while
                 break; 
 
             }else{ // if not expand fringe and ignore already visited
