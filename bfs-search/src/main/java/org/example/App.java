@@ -2,6 +2,9 @@ package org.example;
 
 import org.example.graph.Node;
 import org.example.graph.BFS;
+import org.example.graph.BFSVersion2;
+
+import java.util.*;
 
 public class App 
 {
@@ -36,7 +39,17 @@ public class App
         zona14.connect(zona10);
         zona16.connect(zona10);
 
-        BFS.search(16, zona21);
+        System.out.println("BFS");
+        Stack<Node<Integer>> route = BFS.search(16, zona21);
+        System.out.print(route.pop().getValue());
+
+        while(!route.isEmpty()){
+            System.out.print("->");
+            System.out.print(route.pop().getValue());
+        }
+
+        // System.out.println("BFSVersion2");
+        // route = BFSVersion2.search(16, zona21);
 
     }
 
