@@ -38,7 +38,10 @@ public class BFSVersion2 {
 
             // if last node pushed into route is neighbor to currentNode push currentNode
             if(route.peek().getNeighbors().contains(currentNode)){
-                route.push(currentNode);
+
+                if(!route.contains(currentNode)){
+                    route.push(currentNode);
+                }
             }
         }
 
