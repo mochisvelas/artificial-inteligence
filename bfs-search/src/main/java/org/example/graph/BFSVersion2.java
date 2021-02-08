@@ -14,7 +14,10 @@ public class BFSVersion2 {
         while(!queue.isEmpty()){ // if there's still nodes to explore
             currentNode = queue.remove();
             System.out.println("Current node is "+ currentNode.getValue());
-            visitedNodes.add(currentNode);
+
+            if(!visitedNodes.contains(currentNode)){
+                visitedNodes.add(currentNode);
+            }
 
             if(currentNode.getValue().equals(value)){ // if currentNode is goal, break while
                 break;
