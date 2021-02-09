@@ -11,6 +11,7 @@ public class BFS {
         Set<Node<T>> closed = new HashSet<>();
         Node<T> currentNode;
         Stack<Node<T>> visitedNodes = new Stack<>();
+        Boolean found = false;
 
         while(!fringe.isEmpty()){ // if there's still nodes to explore
             currentNode = fringe.remove();
@@ -21,29 +22,32 @@ public class BFS {
             }
 
             if(currentNode.getValue().equals(value)){ // if current node is goal, break while
+                found = true;
                 break; 
 
             }else{ // if not expand fringe and ignore already visited
                 closed.add(currentNode);
                 fringe.addAll(currentNode.getNeighbors());
                 fringe.removeAll(closed);
-
             } 
         }
 
         // stack to store route
         Stack<Node<T>> route = new Stack<>();
-        // push goal node
-        route.push(visitedNodes.pop());
 
-        while(!visitedNodes.isEmpty()){
-            currentNode = visitedNodes.pop();
+        // push goal node if visitedNodes is not empty
+        if(found){
+            route.push(visitedNodes.pop());
 
-            // if last node pushed into route is neighbor to currentNode push currentNode
-            if(route.peek().getNeighbors().contains(currentNode)){
+            while(!visitedNodes.isEmpty()){
+                currentNode = visitedNodes.pop();
 
-                if(!route.contains(currentNode)){
-                    route.push(currentNode);
+                // if last node pushed into route is neighbor to currentNode push currentNode
+                if(route.peek().getNeighbors().contains(currentNode)){
+
+                    if(!route.contains(currentNode)){
+                        route.push(currentNode);
+                    }
                 }
             }
         }

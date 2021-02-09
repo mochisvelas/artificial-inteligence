@@ -42,37 +42,53 @@ public class App
 
 
         System.out.println("BFS");
-        Stack<Node<Integer>> route = BFS.search(21, zona5);
-        System.out.println("The route is: ");
-        System.out.print(route.pop().getValue());
+        Stack<Node<Integer>> route = BFS.search(16, zona21);
 
-        while(!route.isEmpty()){
-            System.out.print("->");
+        if(!route.isEmpty()){
+            System.out.println("The route is: ");
             System.out.print(route.pop().getValue());
+
+            while(!route.isEmpty()){
+                System.out.print("->");
+                System.out.print(route.pop().getValue());
+            }
+        }
+        else{
+            System.out.println("Route not found");
         }
 
-        System.out.println("");
-
+        System.out.println("\n");
         System.out.println("BFSVersion2");
-        route = BFSVersion2.search(21, zona5);
-        System.out.println("The route is: ");
-        System.out.print(route.pop().getValue());
+        route = BFSVersion2.search(16, zona21);
 
-        while(!route.isEmpty()){
-            System.out.print("->");
+        if(!route.isEmpty()){
+            System.out.println("The route is: ");
             System.out.print(route.pop().getValue());
+
+            while(!route.isEmpty()){
+                System.out.print("->");
+                System.out.print(route.pop().getValue());
+            }
+        }
+        else{
+            System.out.println("Route not found");
         }
 
-        System.out.println("");
-
+        System.out.println("\n");
         System.out.println("DFS");
-        route = DFS.search(21, zona5);
-        System.out.println("The route is: ");
-        System.out.print(route.pop().getValue());
+        route = DFS.search(16, zona21);
 
-        while(!route.isEmpty()){
-            System.out.print("->");
+        if(!route.isEmpty()){
+            System.out.println("The route is: ");
             System.out.print(route.pop().getValue());
+
+            while(!route.isEmpty()){
+                System.out.print("->");
+                System.out.print(route.pop().getValue());
+            }
+        }
+        else{
+            System.out.println("Route not found");
         }
 
         System.out.println("");
