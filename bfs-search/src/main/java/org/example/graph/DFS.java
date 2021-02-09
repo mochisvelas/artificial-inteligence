@@ -2,32 +2,32 @@ package org.example.graph;
 
 import java.util.*;
 
-public class BFSVersion2 {
+public class DFS {
 
+    // method to find goal node
     public static<T> Stack<Node<T>> search(T value, Node<T> start){
-        Queue<Node<T>> fringe = new ArrayDeque<>();
+        Stack<Node<T>> fringe = new Stack<>();
         fringe.add(start);
         Set<Node<T>> closed = new HashSet<>();
         Node<T> currentNode;
         Stack<Node<T>> visitedNodes = new Stack<>();
 
         while(!fringe.isEmpty()){ // if there's still nodes to explore
-            currentNode = fringe.remove();
+            currentNode = fringe.pop();
             System.out.println("Current node is "+ currentNode.getValue());
 
             if(!visitedNodes.contains(currentNode)){
                 visitedNodes.add(currentNode);
             }
 
-            if(currentNode.getValue().equals(value)){ // if currentNode is goal, break while
-                break;
+            if(currentNode.getValue().equals(value)){ // if current node is goal, break while
+                break; 
 
-            }else{ // if not, expand fringe and ignore already visited
+            }else{ // if not expand fringe and ignore already visited
+                closed.add(currentNode);
+                fringe.addAll(currentNode.getNeighbors());
+                fringe.removeAll(closed);
 
-                if(!closed.contains(currentNode)){
-                    closed.add(currentNode);
-                    fringe.addAll(currentNode.getNeighbors());
-                }
             } 
         }
 
@@ -50,7 +50,6 @@ public class BFSVersion2 {
 
         // return stack with route
         return route;
-
     }
 
 }

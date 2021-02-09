@@ -6,14 +6,14 @@ public class BFS {
 
     // method to find goal node
     public static<T> Stack<Node<T>> search(T value, Node<T> start){
-        Queue<Node<T>> queue = new ArrayDeque<>();
-        queue.add(start);
+        Queue<Node<T>> fringe = new ArrayDeque<>();
+        fringe.add(start);
         Set<Node<T>> closed = new HashSet<>();
         Node<T> currentNode;
         Stack<Node<T>> visitedNodes = new Stack<>();
 
-        while(!queue.isEmpty()){ // if there's still nodes to explore
-            currentNode = queue.remove();
+        while(!fringe.isEmpty()){ // if there's still nodes to explore
+            currentNode = fringe.remove();
             System.out.println("Current node is "+ currentNode.getValue());
 
             if(!visitedNodes.contains(currentNode)){
@@ -25,8 +25,8 @@ public class BFS {
 
             }else{ // if not expand fringe and ignore already visited
                 closed.add(currentNode);
-                queue.addAll(currentNode.getNeighbors());
-                queue.removeAll(closed);
+                fringe.addAll(currentNode.getNeighbors());
+                fringe.removeAll(closed);
 
             } 
         }

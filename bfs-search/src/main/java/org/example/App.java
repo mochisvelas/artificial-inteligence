@@ -3,6 +3,7 @@ package org.example;
 import org.example.graph.Node;
 import org.example.graph.BFS;
 import org.example.graph.BFSVersion2;
+import org.example.graph.DFS;
 
 import java.util.*;
 
@@ -41,7 +42,7 @@ public class App
 
 
         System.out.println("BFS");
-        Stack<Node<Integer>> route = BFS.search(21, zona2);
+        Stack<Node<Integer>> route = BFS.search(21, zona5);
         System.out.println("The route is: ");
         System.out.print(route.pop().getValue());
 
@@ -53,7 +54,19 @@ public class App
         System.out.println("");
 
         System.out.println("BFSVersion2");
-        route = BFSVersion2.search(21, zona2);
+        route = BFSVersion2.search(21, zona5);
+        System.out.println("The route is: ");
+        System.out.print(route.pop().getValue());
+
+        while(!route.isEmpty()){
+            System.out.print("->");
+            System.out.print(route.pop().getValue());
+        }
+
+        System.out.println("");
+
+        System.out.println("DFS");
+        route = DFS.search(21, zona5);
         System.out.println("The route is: ");
         System.out.print(route.pop().getValue());
 
