@@ -2,24 +2,25 @@ package org.example;
 
 import java.util.*;
 import java.util.stream.*;
+import java.math.BigInteger;
 
 public class Streams 
 {
-    public static Integer getFibonacci(int n){
+    public static BigInteger getFibonacci(int n){
+        BigInteger first = BigInteger.valueOf(1);
+        BigInteger second = BigInteger.valueOf(1);
+        BigInteger number = BigInteger.valueOf(0);
+
         if(n == 0){
-            return 0;
+            return number;
         }
 
         if(n == 1){
-            return 1;
+            return first;
         }
 
-        int first = 1;
-        int second = 1;
-        int number = 0;
-
         for(int i=2; i<=n; i++){
-            number = first + second;
+            number = first.add(second);
             first = second;
             second = number;
         }
@@ -43,10 +44,6 @@ public class Streams
         return cont <= 0;
     }
 
-    // public static Integer getNthPrimeNumber(int n){
-
-    // }
-
     public static List<Integer> createRandomList(int qty){
         var random = new Random();
         List<Integer> numbers = new LinkedList<>();
@@ -62,7 +59,7 @@ public class Streams
     {
         // System.out.println(getFibonacci(Integer.valueOf(args[0])));
 
-        var primeList = createRandomList(Integer.valueOf(args[0])).stream()
+        var primeList = createRandomList(Integer.valueOf(args[0])).parallelStream()
             .filter(n -> isPrimeNumber(n))
             .sorted()
             .collect(Collectors.toList());
