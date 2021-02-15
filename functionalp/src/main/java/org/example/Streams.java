@@ -60,7 +60,7 @@ public class Streams
 
     public static void main( String[] args )
     {
-        System.out.println(getFibonacci(Integer.valueOf(args[0])));
+        // System.out.println(getFibonacci(Integer.valueOf(args[0])));
 
         var primeList = createRandomList(Integer.valueOf(args[0])).stream()
             .filter(n -> isPrimeNumber(n))
