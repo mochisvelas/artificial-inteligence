@@ -59,19 +59,21 @@ public class Streams
     {
         // System.out.println(getFibonacci(Integer.valueOf(args[0])));
 
+        System.out.println("Calculating primeList...\n");
         var primeList = createRandomList(Integer.valueOf(args[0])).parallelStream()
             .filter(n -> isPrimeNumber(n))
             .sorted()
             .collect(Collectors.toList());
 
-        var fibonacciList = primeList.stream()
+        System.out.println("Calculating fibonacciList...\n");
+        var fibonacciList = primeList.parallelStream()
             .map(n -> getFibonacci(n))
             .collect(Collectors.toList());
 
-        System.out.println("Prime list");
-        System.out.println(primeList);
 
-        System.out.println("Fibonacci list");
-        System.out.println(fibonacciList);
+        System.out.println("Calculation completed");
+        System.out.println("17th prime " + primeList.get(16));
+        System.out.println("17th fibonacci " + fibonacciList.get(16));
+        // System.out.println(fibonacciList);
     }
 }
