@@ -29,6 +29,7 @@ public class App
         problem.addConstraint(new AustraliaColoringConstraint("Northern Territory", "Queensland"));
         problem.addConstraint(new AustraliaColoringConstraint("South Australia", "Queensland"));
         problem.addConstraint(new AustraliaColoringConstraint("New South Wales", "Queensland"));
+        problem.addConstraint(new AustraliaColoringConstraint("New South Wales", "South Australia"));
         problem.addConstraint(new AustraliaColoringConstraint("Victoria", "South Australia"));
         problem.addConstraint(new AustraliaColoringConstraint("New South Wales", "Victoria"));
         problem.addConstraint(new AustraliaColoringConstraint("Tasmania", "Victoria"));
