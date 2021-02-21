@@ -4,12 +4,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.ArrayDeque;
+import java.util.Queue;
 
 public class CSP<V, D>{
 
     private List<V> variables;
     private Map<V, List<D>> domains;
     private Map<V, List<Constraint<V, D>>> constraints = new HashMap<>();
+    private Queue<Map<V, V>> arcsQ = new ArrayDeque<>();
 
     public CSP(List<V> variables, Map<V, List<D>> domains){
         this.variables = variables;
@@ -25,6 +28,7 @@ public class CSP<V, D>{
     }
 
     public void addConstraint(Constraint<V, D> constraint){
+
         for(V variable:constraint.variables){
             // Check if variable in constraint is in CSP too
 
@@ -33,7 +37,20 @@ public class CSP<V, D>{
             }
 
             constraints.get(variable).add(constraint);
+
         }
+            var arc = new HashMap<V, V>();
+            arc.put(constraint.variables.get(0), constraint.variables.get(1));
+
+            if(!arcsQ.contains(arc)){
+                arcsQ.add(arc);
+            }
+
+            arc.put(constraint.variables.get(1), constraint.variables.get(0));
+
+            if(!arcsQ.contains(arc)){
+                arcsQ.add(arc);
+            }
     }
 
     public boolean consistent(V variable, Map<V, D> assignment){
