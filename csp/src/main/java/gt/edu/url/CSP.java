@@ -45,13 +45,11 @@ public class CSP<V, D>{
                 arcsQ.add(constraint.variables);
             }
 
-            Collections.reverse(constraint.variables);
+            List<V> reversed = List.of(constraint.variables.get(1), constraint.variables.get(0));
 
-            if(!arcsQ.contains(constraint.variables)){
-                arcsQ.add(constraint.variables);
+            if(!arcsQ.contains(reversed)){
+                arcsQ.add(reversed);
             }
-
-            Collections.reverse(constraint.variables);
     }
 
     public boolean consistent(V variable, Map<V, D> assignment){
