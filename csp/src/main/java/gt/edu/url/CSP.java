@@ -3,17 +3,16 @@ package gt.edu.url;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.ArrayList;
 import java.util.ArrayDeque;
 import java.util.Queue;
+import java.util.Collections;
 
 public class CSP<V, D>{
 
     private List<V> variables;
     private Map<V, List<D>> domains;
     private Map<V, List<Constraint<V, D>>> constraints = new HashMap<>();
-    private Map<V, V> arcsQ = new LinkedHashMap<>();
+    private Queue<List<V>> arcsQ = new ArrayDeque<>();
 
     public CSP(List<V> variables, Map<V, List<D>> domains){
         this.variables = variables;
@@ -40,22 +39,18 @@ public class CSP<V, D>{
             constraints.get(variable).add(constraint);
 
         }
-            var place1 = constraint.variables.get(0);
-            var place2 = constraint.variables.get(1);
             
-            if(!arcsQ.containsKey(place1)){
-                arcsQ.put(place1, place2);
-            }
-            else if(!arcsQ.get(place1).equals(place2)){
-                arcsQ.put(place1, place2);
+            if(!arcsQ.contains(constraint.variables)){
+                arcsQ.add(constraint.variables);
             }
 
-            if(!arcsQ.containsKey(place2)){
-                arcsQ.put(place2, place1);
+            Collections.reverse(constraint.variables);
+
+            if(!arcsQ.contains(constraint.variables)){
+                arcsQ.add(constraint.variables);
             }
-            else if(!arcsQ.get(place2).equals(place1)){
-                arcsQ.put(place2, place1);
-            }
+
+            Collections.reverse(constraint.variables);
     }
 
     public boolean consistent(V variable, Map<V, D> assignment){
