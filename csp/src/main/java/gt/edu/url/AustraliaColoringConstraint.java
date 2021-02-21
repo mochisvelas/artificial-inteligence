@@ -16,7 +16,7 @@ public class AustraliaColoringConstraint  extends Constraint<String, String> {
     @Override
     public boolean satisfied(Map<String, String> assignment){
         // Check
-        // If variable's been assigned
+        // If variable has not been assigned
         if(!assignment.containsKey(place1) || !assignment.containsKey(place2)){
             return true;
         }

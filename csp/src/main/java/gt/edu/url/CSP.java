@@ -53,6 +53,10 @@ public class CSP<V, D>{
         return backtrack(new HashMap<>());
     }
 
+    public boolean AC3(){
+        return true;
+    }
+
     public Map<V, D> backtrack(Map<V, D> assignment) {
 
        // If assignment is complete (each variable has a value)
@@ -87,4 +91,5 @@ public class CSP<V, D>{
 
        return null;
     }
+
 }
