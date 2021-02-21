@@ -13,7 +13,7 @@ public class CSP<V, D>{
     private List<V> variables;
     private Map<V, List<D>> domains;
     private Map<V, List<Constraint<V, D>>> constraints = new HashMap<>();
-    private Queue<List<V>> arcsQ = new ArrayDeque<>();
+    public Queue<List<V>> arcsQ = new ArrayDeque<>();
 
     public CSP(List<V> variables, Map<V, List<D>> domains){
         this.variables = variables;

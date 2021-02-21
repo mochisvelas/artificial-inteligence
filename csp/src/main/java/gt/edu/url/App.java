@@ -34,8 +34,10 @@ public class App
         problem.addConstraint(new AustraliaColoringConstraint("New South Wales", "Victoria"));
         problem.addConstraint(new AustraliaColoringConstraint("Tasmania", "Victoria"));
 
-        var solution = problem.backtrack();
-        System.out.println(solution);
+        System.out.println(problem.arcsQ);
+
+        // var solution = problem.backtrack();
+        // System.out.println(solution);
 
     }
 }
