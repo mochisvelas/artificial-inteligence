@@ -104,7 +104,7 @@ public class CSP<V, D>{
                 if(x.equals(y)){
                     var localList = new ArrayList<>(domains.get(arc.get(1)));
                     localList.remove(x);
-                    domains.put(arc.get(0), localList);
+                    domains.put(arc.get(1), localList);
                     revised = true;
                 }
             }
