@@ -68,9 +68,13 @@ public class CSP<V, D>{
         return backtrack(new HashMap<>());
     }
 
-    public boolean AC3(Map<V, D> localAssignment){
+    public boolean AC3(V assigned, Map<V, D> localAssignment){
 
-        Queue<List<V>> ArcsQ = new LinkedList<>(Arcs);
+        List<List<V>> neighbors = Arcs.stream()
+            .filter(v -> v.get(0) == assigned)
+            .collect(Collectors.toList());
+
+        Queue<List<V>> ArcsQ = new LinkedList<>(neighbors);
         List<V> currentArc;
 
         while(!ArcsQ.isEmpty()){
@@ -144,7 +148,7 @@ public class CSP<V, D>{
            if(consistent(unassigned, localAssignment)){
 
                domains.put(unassigned, List.of(value));
-               if(!AC3(localAssignment)){
+               if(!AC3(unassigned, localAssignment)){
                    throw new IllegalArgumentException("CSP cannot be solved");
                }
                Map<V, D> result = backtrack(localAssignment);
