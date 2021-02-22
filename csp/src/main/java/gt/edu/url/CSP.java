@@ -134,8 +134,7 @@ public class CSP<V, D>{
            // 3 - verify assignment consistency
            if(consistent(unassigned, localAssignment)){
 
-               domains.get(unassigned).clear();
-               domains.get(unassigned).add(value);
+               domains.put(unassigned, List.of(value));
                AC3();
                Map<V, D> result = backtrack(localAssignment);
 
