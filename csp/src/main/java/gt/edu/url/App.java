@@ -37,7 +37,7 @@ public class App
         // System.out.println(problem.ArcsQ);
 
         var solution = problem.backtrack();
-        // System.out.println(solution);
+        System.out.println(solution);
 
     }
 }
