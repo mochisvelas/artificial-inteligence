@@ -106,6 +106,7 @@ public class CSP<V, D>{
                     localList.remove(x);
                     domains.put(arc.get(1), localList);
                     revised = true;
+                    break;
                 }
             }
         }
