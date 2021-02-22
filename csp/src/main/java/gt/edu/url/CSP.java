@@ -3,17 +3,17 @@ package gt.edu.url;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Queue;
-import java.util.Collections;
+import java.util.LinkedList;
+import java.util.stream.Collectors;
 
 public class CSP<V, D>{
 
     private List<V> variables;
     private Map<V, List<D>> domains;
     private Map<V, List<Constraint<V, D>>> constraints = new HashMap<>();
-    public Queue<List<V>> arcsQ = new ArrayDeque<>();
+    private List<List<V>> Arcs = new ArrayList<>();
 
     public CSP(List<V> variables, Map<V, List<D>> domains){
         this.variables = variables;
@@ -41,14 +41,14 @@ public class CSP<V, D>{
 
         }
             
-            if(!arcsQ.contains(constraint.variables)){
-                arcsQ.add(constraint.variables);
+            if(!Arcs.contains(constraint.variables)){
+                Arcs.add(constraint.variables);
             }
 
             List<V> reversed = List.of(constraint.variables.get(1), constraint.variables.get(0));
 
-            if(!arcsQ.contains(reversed)){
-                arcsQ.add(reversed);
+            if(!Arcs.contains(reversed)){
+                Arcs.add(reversed);
             }
     }
 
@@ -69,7 +69,44 @@ public class CSP<V, D>{
     }
 
     public boolean AC3(){
+
+        Queue<List<V>> ArcsQ = new LinkedList<>(Arcs);
+        List<V> currentArc;
+
+        while(!ArcsQ.isEmpty()){
+            currentArc = ArcsQ.remove();
+
+            if(Revise(currentArc)){
+
+                if(domains.get(currentArc.get(0)).isEmpty()){
+                    return false;
+                }
+
+                for(var arc: Arcs){
+
+                    if(arc.get(1) == currentArc.get(0) && !ArcsQ.contains(arc)){
+                        ArcsQ.add(arc);
+                    }
+                }
+            }
+        }
         return true;
+    }
+
+    public boolean Revise(List<V> arc){
+
+        boolean revised = false;
+
+        for(var x: domains.get(arc.get(0))){
+
+            for(var y: domains.get(arc.get(1))){
+
+                if(x.equals(y)){
+                    domains.get(arc.get(0)).remove(x);
+                }
+            }
+        }
+        return revised;
     }
 
     public Map<V, D> backtrack(Map<V, D> assignment) {
@@ -96,6 +133,10 @@ public class CSP<V, D>{
 
            // 3 - verify assignment consistency
            if(consistent(unassigned, localAssignment)){
+
+               domains.get(unassigned).clear();
+               domains.get(unassigned).add(value);
+               AC3();
                Map<V, D> result = backtrack(localAssignment);
 
                if(result != null){
