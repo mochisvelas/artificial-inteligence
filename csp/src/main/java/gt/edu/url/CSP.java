@@ -68,7 +68,7 @@ public class CSP<V, D>{
         return backtrack(new HashMap<>());
     }
 
-    public boolean AC3(){
+    public boolean AC3(Map<V, D> localAssignment){
 
         Queue<List<V>> ArcsQ = new LinkedList<>(Arcs);
         List<V> currentArc;
@@ -76,7 +76,7 @@ public class CSP<V, D>{
         while(!ArcsQ.isEmpty()){
             currentArc = ArcsQ.remove();
 
-            if(Revise(currentArc)){
+            if(Revise(currentArc, localAssignment)){
 
                 if(domains.get(currentArc.get(0)).isEmpty()){
                     return false;
@@ -93,15 +93,20 @@ public class CSP<V, D>{
         return true;
     }
 
-    public boolean Revise(List<V> arc){
+    public boolean Revise(List<V> arc, Map<V, D> localAssignment){
 
         boolean revised = false;
+        Map<V, D> subLocalAssignment = new HashMap<>(localAssignment);
 
         for(var x: domains.get(arc.get(0))){
 
+            subLocalAssignment.put(arc.get(0), x);
+
             for(var y: domains.get(arc.get(1))){
 
-                if(x.equals(y)){
+                subLocalAssignment.put(arc.get(1), y);
+
+                if(consistent(arc.get(0), localAssignment)){
                     var localList = new ArrayList<>(domains.get(arc.get(1)));
                     localList.remove(x);
                     domains.put(arc.get(1), localList);
@@ -139,7 +144,9 @@ public class CSP<V, D>{
            if(consistent(unassigned, localAssignment)){
 
                domains.put(unassigned, List.of(value));
-               AC3();
+               if(!AC3(localAssignment)){
+                   throw new IllegalArgumentException("CSP cannot be solved");
+               }
                Map<V, D> result = backtrack(localAssignment);
 
                if(result != null){
