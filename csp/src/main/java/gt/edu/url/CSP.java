@@ -106,7 +106,7 @@ public class CSP<V, D>{
 
                 subLocalAssignment.put(arc.get(1), y);
 
-                if(consistent(arc.get(0), subLocalAssignment)){
+                if(!consistent(arc.get(0), subLocalAssignment)){
                     var localList = new ArrayList<>(domains.get(arc.get(1)));
                     localList.remove(x);
                     domains.put(arc.get(1), localList);
