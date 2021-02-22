@@ -102,7 +102,9 @@ public class CSP<V, D>{
             for(var y: domains.get(arc.get(1))){
 
                 if(x.equals(y)){
-                    domains.get(arc.get(0)).remove(x);
+                    var localList = domains.get(arc.get(0));
+                    localList.remove(x);
+                    domains.put(arc.get(0), localList);
                 }
             }
         }
