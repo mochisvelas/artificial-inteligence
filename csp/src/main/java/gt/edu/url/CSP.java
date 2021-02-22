@@ -135,7 +135,7 @@ public class CSP<V, D>{
            .findFirst().get();
 
        for(D value: domains.get(unassigned)){
-           System.out.println("Variable: " + unassigned + "Value: " + value);
+           System.out.println("Variable: " + unassigned + " Value: " + value);
 
            // Try assignment
            // 1 - create a copy of previous assignment 
