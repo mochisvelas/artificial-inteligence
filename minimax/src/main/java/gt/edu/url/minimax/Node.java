@@ -1,8 +1,7 @@
 package gt.edu.url.minimax;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Node<T>{
 
@@ -10,7 +9,7 @@ public class Node<T>{
         private T alpha;
         private T beta;
         private boolean isMax;
-		private Set<Node<T>> children;
+		private List<Node<T>> children;
         // private Node<T> parent;
 
 		// public Node(T value, T alpha, T beta, T type){
@@ -24,14 +23,22 @@ public class Node<T>{
 
         public Node(boolean isMax){
             this.isMax = isMax;
-        }
-
-        public Node(){
             this.value = null;
             this.alpha = null;
             this.beta = null;
-            this.children = new HashSet<>();
+            this.children = new ArrayList<>();
         }
+
+        public Node(T value){
+            this.value = value;
+        }
+
+        // public Node(){
+        //     this.value = null;
+        //     this.alpha = null;
+        //     this.beta = null;
+        //     this.children = new HashSet<>();
+        // }
 
 		public T getValue(){
 				return this.value;
@@ -53,8 +60,8 @@ public class Node<T>{
 		// 		return this.parent;
 		// }
 
-		public Set<Node<T>> getChildren(){
-				return Collections.unmodifiableSet(children);
+		public List<Node<T>> getChildren(){
+				return children;
 		}
 
 		public void addChild(Node<T> node){
