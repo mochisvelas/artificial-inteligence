@@ -33,7 +33,7 @@
               <configuration>
                   <archive>
                       <manifest>
-                          <mainClass>gt.edu.url.Minimax</mainClass>
+                          <mainClass>gt.edu.url.App</mainClass>
                       </manifest>
                   </archive>
               </configuration>
