@@ -6,14 +6,14 @@ public class App
 {
     public static void main( String[] args )
     {
-        GameTree<Integer> gameTree = new GameTree<>(true);
-        gameTree.root.addChild(new Node<>(false));
-        gameTree.root.addChild(new Node<>(false));
-        gameTree.root.addChild(new Node<>(false));
+        GameTree<Integer> gameTree = new GameTree<>("max");
+        gameTree.root.addChild(new Node<>("min"));
+        gameTree.root.addChild(new Node<>("min"));
+        gameTree.root.addChild(new Node<>("min"));
 
         for (Node<Integer> node: gameTree.root.getChildren()){
-            node.addChild(new Node<>(true));
-            node.addChild(new Node<>(true));
+            node.addChild(new Node<>("max"));
+            node.addChild(new Node<>("max"));
         }
 
         gameTree.root.getChildren().get(0).getChildren().get(0).addChild(new Node<>(4));

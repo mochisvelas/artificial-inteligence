@@ -1,15 +1,11 @@
 
 package gt.edu.url.minimax;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
-
 public class AlphaBeta {
 
     public static<T> T finalValue(GameTree<T> gameTree){
 
-        if(gameTree.root.getType()){
+        if(gameTree.root.getType() == "max"){
             return maxValue(gameTree);
         }
         else{

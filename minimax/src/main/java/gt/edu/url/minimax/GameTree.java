@@ -4,7 +4,7 @@ public class GameTree<T> {
 
     public Node<T> root;
 
-    public GameTree(boolean type){
+    public GameTree(String type){
         root = new Node<>(type);
     }
 }

@@ -8,7 +8,7 @@ public class Node<T>{
 		private T value;
         private T alpha;
         private T beta;
-        private boolean isMax;
+        private String type;
 		private List<Node<T>> children;
         // private Node<T> parent;
 
@@ -21,8 +21,8 @@ public class Node<T>{
             // // this.parent = parent;
 		// }
 
-        public Node(boolean isMax){
-            this.isMax = isMax;
+        public Node(String type){
+            this.type = type;
             this.value = null;
             this.alpha = null;
             this.beta = null;
@@ -31,6 +31,7 @@ public class Node<T>{
 
         public Node(T value){
             this.value = value;
+            this.type = "l";
         }
 
         // public Node(){
@@ -52,8 +53,8 @@ public class Node<T>{
 				return this.beta;
 		}
 
-        public boolean getType(){
-            return this.isMax;
+        public String getType(){
+            return this.type;
         }
 
 		// public Node<T> getParent(){
