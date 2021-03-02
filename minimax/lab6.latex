@@ -29,7 +29,7 @@
 % Example of how to add figure (can be used for jpeg, png, pdf, eps etc)
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=1.0\textwidth]{minimax.png}
+    \includegraphics[width=1.0\textwidth]{minimaxMini.jpg}
     \label{fig:parallel}
 \end{figure}
 \end{document}
