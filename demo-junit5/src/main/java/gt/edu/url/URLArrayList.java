@@ -58,7 +58,8 @@ public class URLArrayList<T> implements SimpleList<T>
 
         T oldValue = arrayList[i];
 
-        int numMoved = size - i -1;
+        int numMoved = size - i - 1; //num of numbers to copy after removed element
+        //If removed element is the last one, just decrease arrayList size
         if(numMoved > 0){
             System.arraycopy(arrayList, i + 1, arrayList, i, numMoved);
         }
@@ -70,23 +71,17 @@ public class URLArrayList<T> implements SimpleList<T>
 
     //Method to check if index provided is valid
     private void RangeCheck(int i){
-        if(i >= size){
+        if(i >= size || i < 0){
             throw new IndexOutOfBoundsException();
         }
     }
 
-    //Method to ensure capacaity is enough for new elements
-    private void ensureCapacity(int minCapacity){
+    //Method to ensure capacity of arrayList is enough for new element
+    private void ensureCapacity(int newCapacity){
         int oldCapacity = arrayList.length;
 
-        if(minCapacity > oldCapacity){
+        if(newCapacity > oldCapacity){
             Object oldArrayList[] = arrayList;
-            int newCapacity = (oldCapacity * 3)/2 + 1;
-
-            if(newCapacity < minCapacity){
-                newCapacity = minCapacity;
-            }
-
             arrayList = (T[])new Object[newCapacity];
             System.arraycopy(oldArrayList, 0, arrayList, 0, size);
         }
