@@ -4,8 +4,8 @@ public class App
 {
     public static void main( String[] args )
     {
-        var calculator = new Calculator();
-        var result = calculator.sum(5, 5);
+        var calculadora = new Calculadora();
+        var result = calculadora.sum(5, 5);
         System.out.println(result);
     }
 }

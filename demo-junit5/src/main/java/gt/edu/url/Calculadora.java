@@ -1,6 +1,6 @@
 package gt.edu.url;
 
-public class Calculator 
+public class Calculadora 
 {
     public double sum(double a, double b){ return a+b;}
 
