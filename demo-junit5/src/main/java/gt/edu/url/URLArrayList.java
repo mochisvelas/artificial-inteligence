@@ -3,9 +3,9 @@ package gt.edu.url;
 public class URLArrayList<T> implements SimpleList<T>
 {
 
-    // private transient T[] arrayList;
     private T[] arrayList;
 
+    //Size of the URLArrayList
     private int size;
 
     public URLArrayList(int init){
@@ -13,6 +13,7 @@ public class URLArrayList<T> implements SimpleList<T>
         this.arrayList = (T[])new Object[init];
     }
 
+    //Min capacaity of 10
     public URLArrayList(){
         this(10);
     }
@@ -25,11 +26,13 @@ public class URLArrayList<T> implements SimpleList<T>
         return size == 0;
     }
 
+    //Method to return a value by its index
     public T get(int i){
         RangeCheck(i);
         return arrayList[i];
     }
 
+    //Method to set an element to a new value and return the old one
     public T set(int i, T t){
         RangeCheck(i);
         T oldT = arrayList[i];
@@ -37,6 +40,7 @@ public class URLArrayList<T> implements SimpleList<T>
         return oldT;
     }
 
+    //Adds a new element to arrayList
     public void add(int i, T t){
         if(i > size || i < 0){
             throw new IndexOutOfBoundsException();
@@ -48,6 +52,7 @@ public class URLArrayList<T> implements SimpleList<T>
         size++;
     }
 
+    //Method to remove an element and return it by its index
     public T remove(int i){
         RangeCheck(i);
 
@@ -63,18 +68,20 @@ public class URLArrayList<T> implements SimpleList<T>
         return oldValue;
     }
 
+    //Method to check if index provided is valid
     private void RangeCheck(int i){
         if(i >= size){
             throw new IndexOutOfBoundsException();
         }
     }
 
+    //Method to ensure capacaity is enough for new elements
     private void ensureCapacity(int minCapacity){
         int oldCapacity = arrayList.length;
 
         if(minCapacity > oldCapacity){
             Object oldArrayList[] = arrayList;
-            int newCapacity = (oldCapacity * 3)/2 +1;
+            int newCapacity = (oldCapacity * 3)/2 + 1;
 
             if(newCapacity < minCapacity){
                 newCapacity = minCapacity;
