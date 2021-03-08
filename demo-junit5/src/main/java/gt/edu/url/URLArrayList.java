@@ -3,7 +3,8 @@ package gt.edu.url;
 public class URLArrayList<T> implements SimpleList<T>
 {
 
-    private transient T[] arrayList;
+    // private transient T[] arrayList;
+    private T[] arrayList;
 
     private int size;
 
