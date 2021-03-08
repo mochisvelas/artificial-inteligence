@@ -1,9 +1,13 @@
 package gt.edu.url;
 
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class URLArrayListTest{
 
+    @DisplayName("URL customized ArrayList")
+    @Test
     public void probarLista(){
 
         gt.edu.url.URLArrayList<Integer> lista = new URLArrayList<Integer>();
@@ -19,7 +23,7 @@ public class URLArrayListTest{
         assertEquals(8, lista.get(3));
 
         lista.add(0, 40);
-        lista.add(0, 4);
+        lista.set(0, 4);
         assertEquals(4, lista.get(0));
         assertEquals(8, lista.get(4));
 
