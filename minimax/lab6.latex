@@ -1,0 +1,35 @@
+\documentclass{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{lscape}
+
+% Margins
+\usepackage[top=2.5cm, left=2.5cm, right=2.5cm, bottom=4.0cm]{geometry}
+\pagenumbering{gobble}
+
+%%%%%%%%%%%%%%%%%
+%     Title     %
+%%%%%%%%%%%%%%%%%
+\title{Laboratorio 6 - Inteligencia Artificial}
+\author{Brenner Hernandez \\ 1023718}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+%%%%%%%%%%%%%%%%%
+%   MiniMax    %
+%%%%%%%%%%%%%%%%%
+\section*{MiniMax}
+
+% Example of how to add figure (can be used for jpeg, png, pdf, eps etc)
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1.0\textwidth]{minimaxMini.jpg}
+    \label{fig:parallel}
+\end{figure}
+\end{document}
