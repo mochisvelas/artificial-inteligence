@@ -5,10 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.example</groupId>
-  <artifactId>functionalp</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <artifactId>bfs-search</artifactId>
+  <version>1.0</version>
 
-  <name>functionalp</name>
+  <name>bfs-search</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -26,21 +26,4 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-    
-  <build>
-      <plugins>
-          <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-jar-plugin</artifactId>
-              <version>3.0.2</version>
-              <configuration>
-                  <archive>
-                      <manifest>
-                          <mainClass>org.example.Streams</mainClass>
-                      </manifest>
-                  </archive>
-              </configuration>
-          </plugin>
-      </plugins>
-  </build>
 </project>
